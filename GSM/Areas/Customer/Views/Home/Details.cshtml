@@ -1,0 +1,197 @@
+﻿@model GSM.Models.Building
+@using GSM.Extensions
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Detalles</h2>
+        <hr />
+        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
+            Ver Plano de la Construcción
+        </button>
+        <hr />
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="from1" method="post">          
+
+            <div class="form-group">
+                <label asp-for="Descripcion"></label>
+                <input asp-for="Descripcion" readonly class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Precio"></label>
+                <input asp-for="Precio" readonly class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NumeroDormitorios"></label>
+                <input asp-for="NumeroDormitorios" readonly class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NumeroBano"></label>
+                <input asp-for="NumeroBano" readonly class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        @Html.DisplayNameFor(model => model.HasLivingComedor)
+                        @if (Model.HasLivingComedor)
+                        {
+                            <i class="far fa-check-circle" style="color:forestgreen"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-ban" style="color:red"></i>
+                        }
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.DisplayNameFor(model => model.HasCocinaAmericana)
+                        @if (Model.HasCocinaAmericana)
+                        {
+                            <i class="far fa-check-circle" style="color:forestgreen"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-ban" style="color:red"></i>
+                        }
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.DisplayNameFor(model => model.HasPorche)
+                        @if (Model.HasPorche)
+                        {
+                            <i class="far fa-check-circle" style="color:forestgreen"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-ban" style="color:red"></i>
+                        }
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <img src="@Model.Imagen" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+            </div>
+
+            <div class="col-8">
+
+            </div>
+
+
+            <div class="form-group">
+                @{
+                    bool isInBag = false;
+                    List<int> lstCart = HttpContextAccessor.HttpContext.Session.Get<List<int>>("ssShoppingCart");
+                    if (lstCart != null && lstCart.Contains(Model.Id))
+                    {
+                        isInBag = true;
+
+                    }
+                }
+                @if (isInBag)
+                {
+                    <button type="submit" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-outline-danger form-control">
+                        <i class="far fa-trash-alt"></i>
+                        Eliminar de la bolsa de compras
+                    </button>
+
+                }
+                else
+                {
+                    <button onclick="agregar();" asp-route-id="@Model.Id" class="btn btn-outline-primary form-control-sm">
+                        <i class="fas fa-shopping-cart"></i> Agregar a la bolsa de compras
+                    </button>
+                }
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-outline-success">Volver a página de Inicio</a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Plano de la Construcción</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="@Model.ImagenPlano" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    function agregar() {
+        document.querySelector('#from1').addEventListener('submit', function (e) {
+            var form = this;
+
+            e.preventDefault();
+
+            swal({
+                title: "¡Casa agregada!",
+                text: "@Model.Descripcion será agregada a la bolsa de compras",
+                icon: "success",
+                buttons: [
+                    'No estoy seguro, ¡Cancelar!',
+                    'Si, ¡estoy seguro!'
+                ],
+
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+                    swal("¡ @Model.Descripcion Agregada a la bolsa de compras!", {
+                        buttons: false,
+                        timer: 2500,
+                    }).then(function () {
+                        form.submit();
+                    });
+                } else {
+                    swal("Acción cancelada", "¡En el menú Modelos, podrá encontrar más tipos de casas!", "error");
+                }
+            })
+        });
+    }
+    
+      
+    
+
+</script>
+}

@@ -1,0 +1,28 @@
+﻿@model GSM.Models.ErrorViewModel;
+@{
+    ViewData["Title"] = "CheckoutError";
+}
+<br />
+<h2 class="text-warning">Checkout Error</h2>
+
+<table id="ErrorTable">
+    <tr>
+        <td class="field"></td>
+        <td>
+            @Context.Request.Query["ErrorCode"]
+        </td>
+    </tr>
+    <tr>
+        <td class="field"></td>
+        <td>@Context.Request.Query["Desc"]</td>
+    </tr>
+    <tr>
+        <td class="field"></td>
+        <td>@Context.Request.Query["Desc2"]</td>
+    </tr>
+    <tr>
+        <td class="field"></td>
+        <td>@Context.Request.Query["ErrorMessage"]</td>
+    </tr>
+</table>   
+

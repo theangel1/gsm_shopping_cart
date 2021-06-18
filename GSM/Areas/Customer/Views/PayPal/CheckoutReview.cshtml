@@ -1,0 +1,51 @@
+﻿@model GSM.Models.Order
+@{
+    ViewData["Title"] = "Checkout Review";
+}
+<br />
+<h2 class="text-info">Revisión de Orden</h2>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                <label asp-for="@Model.FirstName"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.LastName"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.City"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.OrderDate"></label>
+            </th>
+            <th>
+                <label asp-for="@Model.Total"></label>
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <th></th>
+            <th>
+                <input asp-for="@Model.FirstName" readonly class="form-control" />
+            </th>
+            <th>
+                <input asp-for="@Model.LastName" readonly class="form-control" />
+            <th>
+                <input asp-for="@Model.City" readonly class="form-control" />
+            <th>
+                <input asp-for="@Model.OrderDate" readonly class="form-control" />
+
+            <th>
+                <input asp-for="@Model.Total" readonly class="form-control" />
+            </th>
+            <th></th>
+        </tr>
+    </table>
+</div>
+<a asp-area="Customer" asp-action="CheckoutComplete" asp-controller="PayPal" class="btn btn-outline-info">Siguiente</a>
+
+

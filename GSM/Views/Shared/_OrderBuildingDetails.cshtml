@@ -1,0 +1,54 @@
+﻿@model List<GSM.Models.Building>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (Model.Count > 0)
+{
+    <table class="table table-striped" width="100%">
+        <tr>
+            <th style="text-align:center; width:20%"></th>
+            <th style="text-align:center;">
+                <label asp-for="@Model.FirstOrDefault().Descripcion"></label>
+            </th>
+            <th style="text-align:center;">
+                <label asp-for="@Model.FirstOrDefault().NumeroDormitorios"></label>
+            </th>
+            <th style="text-align:center;">
+                <label asp-for="@Model.FirstOrDefault().NumeroBano"></label>
+            </th>
+            <th style="text-align:center;">
+                <label asp-for="@Model.FirstOrDefault().Precio"></label>
+            </th>
+            <th style="text-align:center;"></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="padding:50px;">
+                <td>
+                    <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                        <img src="@item.Imagen" width="100%" style="margin:auto; display:block; border-radius:5px; border:1px solid #bbb9b9;" />
+                    </a>
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(c => item.Descripcion)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(c => item.NumeroDormitorios)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(c => item.NumeroBano)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(c => item.Precio)
+                </td>
+                <td style="text-align:center"></td>
+            </tr>
+
+        }
+    </table>
+}
+else
+{
+    <div>Sin items en el carro de compras...</div>
+}

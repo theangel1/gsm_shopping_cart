@@ -1,0 +1,100 @@
+﻿@model GSM.Models.Contract  
+@{
+    ViewData["Title"] = "Detalles";    
+}
+<br />
+<h2 class="text-info">Detalles del Contrato</h2>
+
+<div class="p-4 border rounded row">
+    <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Descripcion"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Descripcion" readonly class="form-control" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Fecha"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Fecha" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="FechaEntrega"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="FechaEntrega" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="RazonSocial"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="RazonSocial" readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Rut"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Rut" readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Email" readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Telefono"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Telefono" readonly class="form-control" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Total"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Total" readonly class="form-control" />
+            </div>
+        </div>
+
+        
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="OrderId"></label>
+            </div>
+            <div class="col-8">
+                <a asp-action="Details" asp-controller="Orders" asp-area="Admin" asp-route-id="@Model.OrderId" class="btn btn-outline-info">Detalle de la Orden</a> 
+                
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <a asp-action="Index" class="btn btn-success">Volver a lista de Contratos</a>
+        </div>
+
+    </div>
+ 
+</div>

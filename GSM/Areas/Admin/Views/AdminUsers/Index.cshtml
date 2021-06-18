@@ -1,0 +1,52 @@
+﻿@model IEnumerable<GSM.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2 class="text-info">Lista de Usuarios Registrados</h2>
+
+<div class="table-responsive-sm">
+    <table class="table table-borderless table-hover table-sm">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Rut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.RazonSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.PhoneNumber)
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Rut)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.RazonSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.PhoneNumber)
+                </td>
+                <td>
+                    <a type="button" class="btn btn-primary" href="@Url.Action("Details/" + item.Id)">
+                        Detalles
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </table>
+</div>
+
+

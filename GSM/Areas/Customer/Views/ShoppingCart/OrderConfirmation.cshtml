@@ -1,0 +1,42 @@
+﻿@model GSM.Models.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Confirmación de Orden";
+}
+<br />
+<h2 class="text-info">Confirmación de Orden de Compra</h2>
+<div class="form-text">
+
+    <div class="alert alert-success">
+        <strong>Su orden de compra ha sido guardada con éxito.</strong>
+    </div>
+    <div class="alert alert-info">
+
+        <p>Debe revisar y aceptar los términos del contrato.</p>
+        <a asp-area="Customer" asp-action="CreateContractPDF" asp-controller="Contract" target="_blank">
+            <i class="fas fa-file-contract"></i>
+        Ver Contrato</a>
+        <hr />
+        <input type="checkbox" id="checkContrato" data-toggle="collapse" href="#collapseMetodosPago" role="button" aria-expanded="false" aria-controls="collapseMetodosPago"/> Acepto los términos del Contrato
+    </div>
+
+
+    <hr />
+    <div class="collapse" id="collapseMetodosPago">
+        <div class="text-center">
+            <a asp-area="Customer" asp-action="CheckoutStart" asp-controller="PayPal">
+                <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
+            </a>
+            <img src="~/images/webpay.png" width="20%" />
+        </div>
+    </div>
+</div>
+<br />
+<partial name="~/Views/Shared/_OrderCustomerDetails.cshtml" model="Model.Order" />
+<br />
+<hr />
+<partial name="~/Views/Shared/_OrderBuildingDetails.cshtml" model="Model.Buildings" />
+<br />
+<a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-outline-warning">
+    <i class="fas fa-arrow-circle-left"></i>
+    Volver al menú principal
+</a>

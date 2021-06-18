@@ -1,0 +1,41 @@
+﻿@model GSM.Models.Order
+
+<h4 class="text-success">Detalle Orden de Compra</h4>
+
+<div style="height:100px;" class="container border">
+    <div class="col-12">
+        <div class="row" style="padding-top:10px;">
+            <div class="col-2">
+                Nombre Completo
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.FirstName" readonly class="form-control" />
+               
+            </div>           
+            <div class="col-2">
+                Total $
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.Total" readonly class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row" style="padding-top:10px;">
+            <div class="col-2">
+                Número de Teléfono
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.Phone" readonly class="form-control" />
+            </div>           
+            <div class="col-2">
+                Fecha de Compra
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.OrderDate" readonly class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>
+
+

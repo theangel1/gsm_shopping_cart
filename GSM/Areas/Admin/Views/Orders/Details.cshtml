@@ -1,0 +1,111 @@
+﻿@model GSM.Models.ViewModel.OrdenDetalleViewModel
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+<br />
+
+<div>
+    <h4 class="text-info">Detalle de Orden de Compra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.OrderDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.PostalCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.PostalCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.Total)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.Total)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.PaymentTransactionId)
+        </dt>
+        <dd style="color:red">
+            @Html.DisplayFor(model => model.Order.PaymentTransactionId)
+        </dd>
+       
+    </dl>
+    <table class="table table-striped">
+        <tr>
+            <th>Descripción Casa</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+        </tr>
+        @for(int i = 0;i<Model.OrderDetail.Count; i++)
+        {
+        <tr>
+            <td>
+                <input asp-for="OrderDetail[i].Building.Descripcion" class="form-control" readonly/>
+            </td>
+            <td>
+                <input asp-for="OrderDetail[i].Quantity" class="form-control" readonly/>
+            </td>
+            <td>
+                <input asp-for="OrderDetail[i].UnitPrice" class="form-control" readonly/>
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Order.Id" class="btn btn-outline-primary">Editar</a> 
+    <a asp-action="Index" class="btn btn-outline-info">Volver a lista de Ordenes de Compra</a>
+</div>

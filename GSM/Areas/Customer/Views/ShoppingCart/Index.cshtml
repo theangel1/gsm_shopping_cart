@@ -1,0 +1,84 @@
+﻿@model GSM.Models.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Check In";
+}
+
+<form method="post">
+    <br />
+    <h2 class="text-info">Su Compra actual</h2>
+    <br />
+    @if (Model.Buildings.Count > 0)
+    {
+        <div class="container border border-secondary rounded" style="padding:15px;">
+            <div class="row">
+                <div class="col-sm" style="border-right:1px solid #ff6a00;">
+                    <div class="table-responsive-sm">
+                        <table class="table table-borderless table-hover table-sm">
+                            <tr>
+                                <th width="60%" style="text-align:center;"> <i class="fas fa-home" style="color:forestgreen"></i> Modelo</th>
+                                <th style="text-align:center;">
+                                    <label asp-for="@Model.Buildings.FirstOrDefault().Descripcion"></label>
+                                </th>
+                                <th style="text-align:center;">
+                                    <label asp-for="@Model.Buildings.FirstOrDefault().Precio"></label>
+                                </th>
+                                <th style="text-align:center;">
+                                    <label asp-for="@Model.Buildings.FirstOrDefault().NumeroDormitorios"></label>
+                                </th>
+                                <th style="text-align:center;">
+                                    <label asp-for="@Model.Buildings.FirstOrDefault().NumeroBano"></label>
+                                </th>
+                                <th style="text-align:center;"></th>
+                            </tr>
+
+                            @foreach (var item in Model.Buildings)
+                            {
+                                <tr>
+                                    <td style="text-align:center">
+                                        <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                                            <img src="@item.Imagen" width="20%" style="margin:auto;  border-radius:5px; border:1px solid #bbb9b9;" />
+                                        </a>
+                                    </td>
+                                    <td style="text-align:center">
+                                        @Html.DisplayFor(c => item.Descripcion)
+                                    </td>
+                                    <td style="text-align:center">
+                                        $@Html.DisplayFor(c => item.Precio)
+                                    </td>
+                                    <td style="text-align:center">
+                                        @Html.DisplayFor(c => item.NumeroDormitorios)
+                                    </td>
+                                    <td style="text-align:center">
+                                        @Html.DisplayFor(c => item.NumeroBano)
+                                    </td>
+                                    <td style="text-align:center">
+                                        <button type="submit" class="btn btn-danger" asp-action="remove" asp-route-id="@item.Id">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <a href="javascript:history.back()" class="btn btn-outline-success">
+                            <i class="fas fa-arrow-circle-left"></i>
+                            Atrás
+                        </a>
+                        <button type="submit" id="btnPlaceOrder" class="btn btn-outline-success">
+                            <i class="fas fa-arrow-circle-right"></i>
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    }
+    else
+    {
+        
+            <h5 class="text-justify">Ningún item agregado</h5>
+        
+    }
+</form>
+

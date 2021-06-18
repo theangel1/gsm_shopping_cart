@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GSM.Models.Contract>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2 class="text-info">Contratos</h2>
+<div class="table-responsive-sm">
+    <table class="table table-borderless table-hover table-sm">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaEntrega)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RazonSocial)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaEntrega)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RazonSocial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+
+
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@item.Id">
+                                Detalles
+                            </a>
+                            <a asp-action="VerContrato" class="btn btn-outline-info" asp-route-id="@item.Id" target="_blank">
+                                Ver Contrato
+                            </a>
+                        </div>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

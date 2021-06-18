@@ -1,0 +1,83 @@
+﻿@model IEnumerable<GSM.Models.Building>
+
+@{
+    ViewData["Title"] = "Casas";
+}
+<br />
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">
+            <i class="fas fa-home" style="color:forestgreen"></i>
+            Nuestros Modelos
+        </h2>
+    </div>
+    <div class="col-6 text-right">        
+       
+        <a asp-action="Create" class="btn btn-outline-info">Crear Casa</a>
+       
+    </div>
+</div>
+
+<div class="table-responsive-sm">
+    <table class="table table-borderless table-hover table-sm">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroDormitorios)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroBano)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HasLivingComedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HasCocinaAmericana)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HasPorche)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroDormitorios)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroBano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasLivingComedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasCocinaAmericana)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasPorche)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    <partial name="_TableButtonPartial" model="item.Id" />
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    </div>

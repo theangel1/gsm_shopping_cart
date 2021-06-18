@@ -1,0 +1,78 @@
+﻿@model GSM.Models.Building
+
+@{
+    ViewData["Title"] = "Eliminar Csa";
+}
+
+<br />
+<h2>Eliminar Casa</h2>
+
+<h3 class="text-danger">¿Desea eliminar esta casa?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDormitorios)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDormitorios)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroBano)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroBano)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasLivingComedor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HasLivingComedor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasCocinaAmericana)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HasCocinaAmericana)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasPorche)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HasPorche)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd>
+            <img src="@Model.Imagen" width="20%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagenPlano)
+        </dt>
+        <dd>
+            <img src="@Model.ImagenPlano" width="20%" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-outline-info">Volver a la Listas</a>
+    </form>
+</div>
